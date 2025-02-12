@@ -1,0 +1,32 @@
+<!-- File: confirmation.html
+Author: Justin Wang (justin1@bu.edu), 2/11/2025
+Description: Confirmation template -->
+
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>Order confirmed</h1>
+    <p>Your order will be ready at {{ readytime }}.</p>
+
+    <h3>Your order details</h3>
+    <ul>
+        {% for item in item_names %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <p><b>Total: ${{ total_price }}</b></p>
+
+    {% if special_requests %}
+        <h3>Special requests</h3>
+        <p>{{ special_requests }}</p>
+    {% endif %}
+
+    <h3>Customer information</h3>
+    <p>{{ name }}</p>
+    <p>{{ email }}</p>
+    <p>{{ phone }}</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+<!-- File: order.html
+Author: Justin Wang (justin1@bu.edu), 2/12/2025
+Description: Order template -->
+
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>Order</h1>
+    <form action="{% url 'submit_order' %}" method="POST">
+        {% csrf_token %}
+
+        <h3>Select your items</h3>
+        <table>
+            <tr>
+                <td>
+                    <img src="https://s7d1.scene7.com/is/image/mcdonalds/DC_202302_0005-999_BigMac_1564x1564-1:nutrition-calculator-tile" width="100">
+                </td>
+                <td>
+                    <input type="checkbox" name="items" value="big_mac">Big Mac® - $6.69<br>
+                    <input type="checkbox" name="items" value="big_mac_meal">Make It a Meal (+$4.30)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="https://s7d1.scene7.com/is/image/mcdonalds/DC_202201_0007-005_QuarterPounderwithCheese_1564x1564-1:nutrition-calculator-tile" width="100">
+                </td>
+                <td>
+                    <input type="checkbox" name="items" value="quarter_pounder">Quarter Pounder® with Cheese - $6.19<br>
+                    <input type="checkbox" name="items" value="quarter_pounder_meal">Make It a Meal (+$4.70)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="https://s7d1.scene7.com/is/image/mcdonaldsstage/DC_202208_5280_10McNuggets_Stacked_1564x1564?wid=1564&hei=1564&dpr=off" width="100">
+                </td>
+                <td>
+                    <input type="checkbox" name="items" value="mcnuggets">10 pc. Chicken McNuggets® - $5.79<br>
+                    <input type="checkbox" name="items" value="mcnuggets_meal">Make It a Meal (+$5.20)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_8932_MediumFries_1564x1564-1?wid=1564&hei=1564&dpr=off" width="100">
+                </td>
+                <td>
+                    <input type="checkbox" name="items" value="fries">Medium French Fries - $3.99
+                </td>
+            </tr>
+        </table>
+
+        <h3>Daily Special</h3>
+        <table>
+            <tr>
+                <td>
+                    <img src="{{ daily_special.image }}" width="100">
+                </td>
+                <td>
+                    <input type="checkbox" name="items" value="{{ daily_special.name }}">{{ daily_special.item_name }}
+                </td>
+            </tr>
+        </table>
+
+        <h3>Special requests</h3>
+        <textarea name="special_requests" placeholder="Napkins, ketchup, etc." style="width: 500px; height: 100px;"></textarea>
+
+        <h3>Customer information</h3>
+        <table>
+            <tr>
+                <td>
+                    <label>Name</label>
+                </td>
+                <td>
+                    <input type="text" name="name" placeholder="Name" style="width: 200px; font-family: monospace;" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email</label>
+                </td>
+                <td>
+                    <input type="email" name="email" placeholder="Email" style="width: 200px; font-family: monospace;" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Phone</label>
+                </td>
+                <td>
+                    <input type="tel" name="phone" placeholder="Phone" style="width: 200px; font-family: monospace;" required>
+                </td>
+            </tr>
+        </table>
+
+        <h2 class="submit-button">
+            <input type="submit" value="Place Order" style="background: none; border: none; padding: 0; font: inherit; color: inherit; cursor: pointer;">
+        </h2>
+    </form>
+</div>
+
+{% endblock %}

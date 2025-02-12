@@ -1,0 +1,23 @@
+<!-- File: base.html
+Author: Justin Wang (justin1@bu.edu), 2/11/2025
+Description: Base template -->
+
+{% load static %}
+
+<html>
+    <head>
+        <title>McDonald's</title>
+        <link rel="stylesheet" href="{% static 'restaurant/styles.css' %}">
+    </head>
+    <header>
+        <img src="https://www.mcdonalds.com/content/dam/sites/usa/nfl/icons/arches-logo_108x108.jpg">
+        <nav>
+            <ul><a href="{% url 'main' %}">Home</a></ul>
+            <ul><a href="{% url 'order' %}">Order</a></ul>
+        </nav>
+    </header>
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>
