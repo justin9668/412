@@ -1,0 +1,27 @@
+<!-- File: base.html
+Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Description: Base template -->
+
+{% load static %}
+
+<html>
+    <head>
+        <title>Facebook</title>
+        <link rel="stylesheet" href="{% static 'mini_fb/styles.css' %}">
+    </head>
+    <header>
+        <h1>facebook</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'show_all_profile' %}">People</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        Created by justin1@bu.edu
+    </footer>
+</html>

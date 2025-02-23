@@ -1,0 +1,18 @@
+<!-- File: show_profile.html
+Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Description: Show profile template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="profile-page">
+    <img src="{{ profile.profile_image_url }}" style="max-width: 200px;"></td>
+    <div>
+        <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
+        <p>{{ profile.city }}</p>
+        <p>{{ profile.email_address }}</p>
+    </div>
+</main>
+
+{% endblock %}

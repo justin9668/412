@@ -1,0 +1,29 @@
+<!-- File: show_all_profiles.html
+Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Description: Show all profiles template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main>
+    <table>
+        {% for profile in profiles %}
+        <tr>
+            <td>
+                <a href="{% url 'show_profile' profile.pk %}">
+                    <img src="{{ profile.profile_image_url }}" style="max-width: 100px;">
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'show_profile' profile.pk %}">
+                    <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+                </a>
+                <p>{{ profile.city }}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+
+{% endblock %}

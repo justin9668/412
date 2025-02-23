@@ -1,0 +1,93 @@
+/* File: styles.css
+Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Description: Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F2F5;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1, h2, h3 {
+    font-weight: 550;
+}
+
+header {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+header h1 {
+    color: #0766FF;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+table {
+    border-spacing: 0 1rem;
+}
+
+td {
+    vertical-align: middle;
+}
+
+td:first-child {
+    padding-right: 1rem;
+}
+
+td p {
+    margin: 0.5rem 0;
+}
+
+.profile-page {
+    align-items: center;
+}
+
+.profile-page img {
+    margin-right: 1rem;
+}
+
+.profile-page div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-page p {
+    margin: 0.5rem 0;
+}
