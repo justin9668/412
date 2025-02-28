@@ -1,0 +1,18 @@
+<!-- File: create_profile_form.html
+Author: Justin Wang (justin1@bu.edu), 2/27/2025
+Description: Create profile form template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Create a new profile</h2>
+    <form action="{% url 'create_profile' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Profile</button>
+    </form>
+</main>
+
+{% endblock %}

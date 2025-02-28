@@ -1,0 +1,18 @@
+<!-- File: create_status_form.html
+Author: Justin Wang (justin1@bu.edu), 2/27/2025
+Description: Create status form template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Create a new status message for {{ profile.first_name }} {{ profile.last_name }}</h2>
+    <form action="{% url 'create_status' profile.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Status</button>
+    </form>
+</main>
+
+{% endblock %}

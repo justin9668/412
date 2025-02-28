@@ -1,5 +1,5 @@
 <!-- File: base.html
-Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
 Description: Base template -->
 
 {% load static %}
@@ -14,6 +14,9 @@ Description: Base template -->
         <nav>
             <ul>
                 <li><a href="{% url 'show_all_profile' %}">People</a></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
             </ul>
         </nav>
     </header>

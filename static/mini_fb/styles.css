@@ -1,5 +1,5 @@
 /* File: styles.css
-Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
 Description: Styles */
 
 * {
@@ -9,28 +9,41 @@ Description: Styles */
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    margin: auto;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     background-color: #F1F2F5;
+    font-family: 'Inter', sans-serif;
+    color: #262626;
 }
 
 a {
+    color: #262626;
     text-decoration: none;
-    color: black;
 }
 
 h1, h2, h3 {
     font-weight: 550;
 }
 
-header {
+main {
+    display: flex;
+    justify-content: center;
     margin: 1rem;
+}
+
+footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+header {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    margin: 1rem;
+    gap: 1rem;
 }
 
 header h1 {
@@ -43,51 +56,231 @@ header nav {
 }
 
 header nav ul {
+    display: flex;
     list-style: none;
 }
 
-main {
-    display: flex;
-    justify-content: center;
+header nav ul li {
+    padding: 0 1rem;
 }
 
-footer {
-    margin-top: auto;
+header nav ul li a {
+    font-weight: 550;
+}
+
+
+/* reusable components */
+.profile-circle {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-circle-sm {
+    width: 75px;
+    height: 75px;
+}
+
+.profile-circle-lg {
+    width: 150px;
+    height: 150px;
+}
+
+/* people page */
+.people {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.people h1 {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 28px;
+}
+
+.people-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.profile-card-link {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+
+.profile-card-link:hover .profile-card {
+    border-color: #0766FF;
+}
+
+.profile-image {
+    padding: 1rem 0 1rem 1rem;
+}
+
+.profile-details {
+    flex: 1;
     padding: 1rem;
 }
 
-table {
-    border-spacing: 0 1rem;
+.profile-details h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
 }
 
-td {
-    vertical-align: middle;
+.profile-details p {
+    color: #8e8e8e;
+    font-size: 14px;
 }
 
-td:first-child {
-    padding-right: 1rem;
-}
-
-td p {
-    margin: 0.5rem 0;
-}
-
+/* profile page */
 .profile-page {
-    align-items: center;
-}
-
-.profile-page img {
-    margin-right: 1rem;
-}
-
-.profile-page div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.profile-page p {
-    margin: 0.5rem 0;
+.profile-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.profile-header img {
+    margin-right: 1.5rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info h2 {
+    font-size: 28px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #8e8e8e;
+}
+
+.profile-buttons{
+    margin-left: auto;
+}
+
+.create-status-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: #0766FF;
+    color: white;
+    text-align: center;
+}
+
+.status-messages {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.status-messages h3 {
+    margin-bottom: 1rem;
+    font-size: 18px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    margin: 1rem 0;
+    background-color: #dbdbdb;
+}
+
+.message-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message-item p:first-child {
+    margin-bottom: 8px;
+}
+
+.message-item p:last-child {
+    color: #8e8e8e;
+    font-size: 12px;
+}
+
+/* form */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form h2 {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 28px;
+}
+
+.form form {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.form form p {
+    margin-bottom: 1rem;
+}
+
+.form form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form form input,
+.form form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+}
+
+.form button {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #0766FF;
+    color: white;
+    cursor: pointer;
 }

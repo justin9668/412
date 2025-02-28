@@ -1,5 +1,5 @@
 <!-- File: show_profile.html
-Author: Justin Wang (justin1@bu.edu), 2/23/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
 Description: Show profile template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -7,11 +7,28 @@ Description: Show profile template -->
 {% block content %}
 
 <main class="profile-page">
-    <img src="{{ profile.profile_image_url }}" style="max-width: 200px;"></td>
-    <div>
-        <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
-        <p>{{ profile.city }}</p>
-        <p>{{ profile.email_address }}</p>
+    <div class="profile-header">
+        <img class="profile-circle profile-circle-lg" src="{{ profile.profile_image_url }}">
+        <div class="profile-info">
+            <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
+            <p>{{ profile.city }}</p>
+            <p>{{ profile.email_address }}</p>
+        </div>
+        <div class="profile-buttons">
+            <a href="{% url 'create_status' profile.pk %}" class="create-status-button">Create Status</a>
+        </div>
+    </div>
+    
+    <div class="status-messages">
+        <h3>Status Messages</h3>
+        <div class="divider"></div>
+        
+        {% for status_message in profile.get_status_messages %}
+        <div class="message-item">
+            <p>{{ status_message.message }}</p>
+            <p>{{ status_message.timestamp }}</p>
+        </div>
+        {% endfor %}
     </div>
 </main>
 
