@@ -1,5 +1,5 @@
 /* File: styles.css
-Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
 Description: Styles */
 
 * {
@@ -186,11 +186,14 @@ header nav ul li a {
     color: #8e8e8e;
 }
 
-.profile-buttons{
+.profile-buttons {
     margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.create-status-button {
+.profile-button {
     display: inline-block;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -283,4 +286,23 @@ header nav ul li a {
     background-color: #0766FF;
     color: white;
     cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.status-message-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.form .message-item {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }

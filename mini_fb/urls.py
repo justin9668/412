@@ -1,5 +1,5 @@
 # File: urls.py
-# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
+# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
 # Description: URL patterns
 
 from django.urls import path
@@ -12,4 +12,7 @@ urlpatterns = [
     path('profile/<int:pk>', ShowProfilePageView.as_view(), name='show_profile'),
     path('profile/create', CreateProfileView.as_view(), name='create_profile'),
     path('profile/<int:pk>/create_status', CreateStatusMessageView.as_view(), name='create_status'),
+    path('profile/<int:pk>/update', UpdateProfileView.as_view(), name='update_profile'),
+    path('status/<int:pk>/delete', DeleteStatusMessageView.as_view(), name='delete_status'),
+    path('status/<int:pk>/update', UpdateStatusMessageView.as_view(), name='update_status'),
 ]

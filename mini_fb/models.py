@@ -1,5 +1,5 @@
 # File: models.py
-# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
+# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
 # Description: Models
 
 from django.db import models
@@ -36,3 +36,18 @@ class StatusMessage(models.Model):
     def __str__(self):
         """Return a string representation of this model instance"""
         return f'{self.profile.first_name} {self.profile.last_name} at {self.timestamp}'
+    
+    def get_images(self):
+        """Return all images associated with this status message"""
+        images = Image.objects.filter(statusimage__status_message=self)
+        return images
+    
+class Image(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    image_file = models.ImageField(blank=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    caption = models.TextField(blank=True)
+
+class StatusImage(models.Model):
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    status_message = models.ForeignKey(StatusMessage, on_delete=models.CASCADE)

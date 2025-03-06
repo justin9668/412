@@ -1,5 +1,5 @@
 <!-- File: create_profile_form.html
-Author: Justin Wang (justin1@bu.edu), 2/27/2025
+Author: Justin Wang (justin1@bu.edu), 2/27/2025 modified 3/06/2025
 Description: Create profile form template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -12,6 +12,7 @@ Description: Create profile form template -->
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Create Profile</button>
+        <a href="{% url 'show_all_profile' %}" class="button">Cancel</a>
     </form>
 </main>
 

@@ -1,0 +1,19 @@
+<!-- File: update_profile_form.html
+Author: Justin Wang (justin1@bu.edu), 3/06/2025
+Description: Update profile form template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Update profile</h2>
+    <form action="{% url 'update_profile' profile.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Profile</button>
+        <a href="{% url 'show_profile' profile.pk %}" class="button">Cancel</a>
+    </form>
+</main>
+
+{% endblock %}

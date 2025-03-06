@@ -1,0 +1,19 @@
+<!-- File: update_status_form.html
+Author: Justin Wang (justin1@bu.edu), 3/06/2025
+Description: Update status form template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Update status message</h2>
+    <form action="{% url 'update_status' status_message.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Status</button>
+        <a href="{% url 'show_profile' status_message.profile.pk %}" class="button">Cancel</a>
+    </form>
+</main>
+
+{% endblock %}

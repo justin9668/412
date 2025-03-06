@@ -1,0 +1,28 @@
+<!-- File: delete_status_form.html
+Author: Justin Wang (justin1@bu.edu), 3/06/2025
+Description: Delete status form template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Delete status message</h2>
+    <div class="message-item">
+        <p>{{ status_message.message }}</p>
+        {% for image in status_message.get_images %}
+        <img src="{{ image.image_file.url }}" class="status-message-image">
+        {% endfor %}
+        <p>{{ status_message.timestamp }}</p>
+    </div>
+
+    <p>Are you sure you want to delete this status message?</p>
+
+    <form action="{% url 'delete_status' status_message.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+        <a href="{% url 'show_profile' status_message.profile.pk %}" class="button">No</a>
+    </form>
+</main>
+
+{% endblock %}
