@@ -1,9 +1,9 @@
 # File: views.py
-# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
+# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/20/2025
 # Description: Views
 
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from .models import Profile, Image, StatusImage, StatusMessage
 from .forms import CreateProfileForm, CreateStatusMessageForm, UpdateProfileForm, UpdateStatusMessageForm
 from django.urls import reverse
@@ -95,3 +95,28 @@ class UpdateStatusMessageView(UpdateView):
         status_message = self.get_object()
         profile_pk = status_message.profile.pk
         return reverse('show_profile', kwargs={'pk': profile_pk})
+
+class AddFriendView(View):
+    """Define a view class to add a friend to a profile"""
+
+    def dispatch(self, request, pk, other_pk):
+        """Add a friend to a profile"""
+        profile = Profile.objects.get(pk=pk)
+        other = Profile.objects.get(pk=other_pk)
+        
+        profile.add_friend(other)
+        return redirect('show_profile', pk=pk)
+    
+class ShowFriendSuggestionsView(DetailView):
+    """Define a view class to show friend suggestions"""
+
+    model = Profile
+    template_name = 'mini_fb/friend_suggestions.html'
+    context_object_name = 'profile'
+
+class ShowNewsFeedView(DetailView):
+    """Define a view class to show the news feed"""
+
+    model = Profile
+    template_name = 'mini_fb/news_feed.html'
+    context_object_name = 'profile'

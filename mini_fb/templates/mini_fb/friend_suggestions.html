@@ -1,0 +1,34 @@
+<!-- File: friend_suggestions.html
+Author: Justin Wang (justin1@bu.edu), 3/20/2025
+Description: Friend suggestions template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="friend-suggestions">
+    <div class="friend-suggestions-header">
+        <h1>Friend suggestions for {{ profile.first_name }} {{ profile.last_name }}</h1>
+        <a href="{% url 'show_profile' profile.pk %}" class="profile-button">Back to Profile</a>
+    </div>
+    
+    <div class="friend-suggestions-container">
+        {% for suggestion in profile.get_friend_suggestions %}
+        <div class="friend-suggestion-card">
+            <a href="{% url 'show_profile' suggestion.pk %}" class="friend-suggestion-link">
+                <div class="friend-suggestion-image">
+                    <img class="profile-circle profile-circle-sm" src="{{ suggestion.profile_image_url }}">
+                </div>
+                <div class="friend-suggestion-details">
+                    <h3>{{ suggestion.first_name }} {{ suggestion.last_name }}</h3>
+                </div>
+            </a>
+            <a href="{% url 'add_friend' profile.pk suggestion.pk %}" class="profile-button">Add Friend</a>
+        </div>
+        {% empty %}
+        <p>No friend suggestions</p>
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<!-- File: news_feed.html
+Author: Justin Wang (justin1@bu.edu), 3/20/2025
+Description: News feed template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="news-feed">
+    <div class="news-feed-header">
+        <h1>{{ profile.first_name }}'s Feed</h1>
+        <a href="{% url 'show_profile' profile.pk %}" class="profile-button">Back to Profile</a>
+    </div>
+    
+    <div class="news-feed-container">
+        {% for status_message in profile.get_news_feed %}
+        <div class="news-feed-item">
+            <div class="news-feed-author">
+                <a href="{% url 'show_profile' status_message.profile.pk %}" class="news-feed-author-link">
+                    <img class="profile-circle profile-circle-sm" src="{{ status_message.profile.profile_image_url }}">
+                    <div class="news-feed-author-info">
+                        <h3>{{ status_message.profile.first_name }} {{ status_message.profile.last_name }}</h3>
+                        <p>{{ status_message.timestamp }}</p>
+                    </div>
+                </a>
+            </div>
+            <div class="news-feed-content">
+                <p>{{ status_message.message }}</p>
+                {% for image in status_message.get_images %}
+                <img src="{{ image.image_file.url }}" class="status-message-image">
+                {% endfor %}
+            </div>
+        </div>
+        {% empty %}
+        <p>No posts to show</p>
+        {% endfor %}
+    </div>
+</main>
+
+{% endblock %}

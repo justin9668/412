@@ -1,5 +1,5 @@
 <!-- File: show_profile.html
-Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/20/2025
 Description: Show profile template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -15,22 +15,36 @@ Description: Show profile template -->
             <p>{{ profile.email_address }}</p>
         </div>
         <div class="profile-buttons">
+            <a href="{% url 'news_feed' profile.pk %}" class="profile-button">Feed</a>
+            <a href="{% url 'create_status' profile.pk %}" class="profile-button">Post</a>
             <a href="{% url 'update_profile' profile.pk %}" class="profile-button">Update Profile</a>
-            <a href="{% url 'create_status' profile.pk %}" class="profile-button">Create Status</a>
         </div>
     </div>
-    
-    <div class="status-messages">
-        <h3>Status Messages</h3>
+    <div>
+        <h3>Friends</h3>
         <div class="divider"></div>
-        
+        <div class="friends-scroll">
+            {% for friend in profile.get_friends %}
+            <a href="{% url 'show_profile' friend.pk %}" class="friend-card">
+                <img class="profile-circle profile-circle-sm" src="{{ friend.profile_image_url }}">
+                <p>{{ friend.first_name }} {{ friend.last_name }}</p>
+            </a>
+            {% empty %}
+            <p>No friends yet</p>
+            {% endfor %}
+        </div>
+        <a href="{% url 'friend_suggestions' profile.pk %}" class="profile-button">Friend Suggestions</a>
+    </div>
+    <div class="status-messages">
+        <h3>Posts</h3>
+        <div class="divider"></div>
         {% for status_message in profile.get_status_messages %}
         <div class="message-item">
             <p>{{ status_message.message }}</p>
             {% for image in status_message.get_images %}
             <img src="{{ image.image_file.url }}" class="status-message-image">
             {% endfor %}
-            <p>{{ status_message.timestamp }}</p>
+            <p class="timestamp">{{ status_message.timestamp }}</p>
             <a href="{% url 'update_status' status_message.pk %}" class="profile-button">Update</a>
             <a href="{% url 'delete_status' status_message.pk %}" class="profile-button">Delete</a>
         </div>

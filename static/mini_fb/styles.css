@@ -1,5 +1,5 @@
 /* File: styles.css
-Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/06/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/20/2025
 Description: Styles */
 
 * {
@@ -212,6 +212,13 @@ header nav ul li a {
     font-size: 18px;
 }
 
+.timestamp {
+    color: #8e8e8e;
+    font-size: 12px;
+    margin: 5px 0 0;
+    margin-bottom: 1rem;
+}
+
 .divider {
     width: 100%;
     height: 1px;
@@ -300,9 +307,196 @@ header nav ul li a {
 .form .message-item {
     width: 100%;
     margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.friends-scroll {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+.friend-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 100px;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.friend-card p {
+    margin-top: 0.5rem;
+    font-size: 14px;
+}
+
+/* friend suggestions page */
+.friend-suggestions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.friend-suggestions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.friend-suggestions-header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+.friend-suggestions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.friend-suggestion-card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.5s ease;
+}
+
+.friend-suggestion-card:hover {
+    border-color: #0766FF;
+}
+
+.friend-suggestion-link {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+}
+
+.friend-suggestion-image {
+    padding: 1rem 0 1rem 1rem;
+}
+
+.friend-suggestion-details {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.friend-suggestion-details h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.friend-suggestion-details p {
+    color: #8e8e8e;
+    font-size: 14px;
+}
+
+.friend-suggestion-card .profile-button {
+    margin-right: 1rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* news feed page */
+.news-feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.news-feed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.news-feed-header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+.news-feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.news-feed-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     padding: 1rem;
     border-radius: 8px;
     background-color: white;
+    gap: 1rem;
+}
+
+.news-feed-author {
+    width: 100%;
+}
+
+.news-feed-author-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-feed-author-info {
+    margin-left: 1rem;
+}
+
+.news-feed-author-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.news-feed-author-info p {
+    margin: 5px 0 0;
+    color: #8e8e8e;
+    font-size: 12px;
+}
+
+.news-feed-content {
+    width: 100%;
+}
+
+.news-feed-content p {
+    margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
