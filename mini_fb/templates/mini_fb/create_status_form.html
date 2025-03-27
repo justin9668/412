@@ -1,5 +1,5 @@
 <!-- File: create_status_form.html
-Author: Justin Wang (justin1@bu.edu), 2/27/2025 modified 3/06/2025
+Author: Justin Wang (justin1@bu.edu), 2/27/2025 modified 3/27/2025
 Description: Create status form template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -8,7 +8,7 @@ Description: Create status form template -->
 
 <main class="form">
     <h2>Create a new status message for {{ profile.first_name }} {{ profile.last_name }}</h2>
-    <form action="{% url 'create_status' profile.pk %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'create_status' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="file" name = "files" multiple />

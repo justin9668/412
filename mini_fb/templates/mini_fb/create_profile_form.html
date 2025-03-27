@@ -1,5 +1,5 @@
 <!-- File: create_profile_form.html
-Author: Justin Wang (justin1@bu.edu), 2/27/2025 modified 3/06/2025
+Author: Justin Wang (justin1@bu.edu), 2/27/2025 modified 3/27/2025
 Description: Create profile form template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -7,11 +7,14 @@ Description: Create profile form template -->
 {% block content %}
 
 <main class="form">
-    <h2>Create a new profile</h2>
+    <h2>Sign up</h2>
     <form action="{% url 'create_profile' %}" method="post">
         {% csrf_token %}
+        <h3>User Information</h3>
+        {{ user_form.as_p }}
+        <h3>Profile Information</h3>
         {{ form.as_p }}
-        <button type="submit">Create Profile</button>
+        <button type="submit">Sign Up</button>
         <a href="{% url 'show_all_profile' %}" class="button">Cancel</a>
     </form>
 </main>

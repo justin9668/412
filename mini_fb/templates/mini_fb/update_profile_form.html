@@ -1,5 +1,5 @@
 <!-- File: update_profile_form.html
-Author: Justin Wang (justin1@bu.edu), 3/06/2025
+Author: Justin Wang (justin1@bu.edu), 3/06/2025 modified 3/27/2025
 Description: Update profile form template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -8,7 +8,7 @@ Description: Update profile form template -->
 
 <main class="form">
     <h2>Update profile</h2>
-    <form action="{% url 'update_profile' profile.pk %}" method="post">
+    <form action="{% url 'update_profile' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Update Profile</button>

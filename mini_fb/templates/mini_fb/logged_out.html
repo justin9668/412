@@ -1,0 +1,16 @@
+<!-- File: logged_out.html
+Author: Justin Wang (justin1@bu.edu), 3/26/2025
+Description: Logged out template -->
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<main class="form">
+    <h2>Logged Out</h2>
+    <p>You have been logged out.</p>
+    <a href="{% url 'login' %}" class="button">Login</a>
+    </form>
+</main>
+
+{% endblock %}

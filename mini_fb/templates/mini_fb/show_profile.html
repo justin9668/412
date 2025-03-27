@@ -1,5 +1,5 @@
 <!-- File: show_profile.html
-Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/20/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/27/2025
 Description: Show profile template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -15,9 +15,11 @@ Description: Show profile template -->
             <p>{{ profile.email_address }}</p>
         </div>
         <div class="profile-buttons">
-            <a href="{% url 'news_feed' profile.pk %}" class="profile-button">Feed</a>
-            <a href="{% url 'create_status' profile.pk %}" class="profile-button">Post</a>
-            <a href="{% url 'update_profile' profile.pk %}" class="profile-button">Update Profile</a>
+            {% if user.is_authenticated and user == profile.user %}
+                <a href="{% url 'news_feed' %}" class="profile-button">Feed</a>
+                <a href="{% url 'create_status' %}" class="profile-button">Post</a>
+                <a href="{% url 'update_profile' %}" class="profile-button">Update Profile</a>
+            {% endif %}
         </div>
     </div>
     <div>
@@ -33,7 +35,9 @@ Description: Show profile template -->
             <p>No friends yet</p>
             {% endfor %}
         </div>
-        <a href="{% url 'friend_suggestions' profile.pk %}" class="profile-button">Friend Suggestions</a>
+        {% if user.is_authenticated and user == profile.user %}
+            <a href="{% url 'friend_suggestions' %}" class="profile-button">Friend Suggestions</a>
+        {% endif %}
     </div>
     <div class="status-messages">
         <h3>Posts</h3>
@@ -45,8 +49,10 @@ Description: Show profile template -->
             <img src="{{ image.image_file.url }}" class="status-message-image">
             {% endfor %}
             <p class="timestamp">{{ status_message.timestamp }}</p>
-            <a href="{% url 'update_status' status_message.pk %}" class="profile-button">Update</a>
-            <a href="{% url 'delete_status' status_message.pk %}" class="profile-button">Delete</a>
+            {% if user.is_authenticated and user == profile.user %}
+                <a href="{% url 'update_status' status_message.pk %}" class="profile-button">Update</a>
+                <a href="{% url 'delete_status' status_message.pk %}" class="profile-button">Delete</a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>

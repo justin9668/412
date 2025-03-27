@@ -1,9 +1,10 @@
 # File: models.py
-# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/20/2025
+# Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/26/2025
 # Description: Models
 
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Profile(models.Model):
@@ -13,6 +14,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=30)
     email_address = models.EmailField(max_length=254)
     profile_image_url = models.URLField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         """Return a string representation of this model instance"""

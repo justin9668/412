@@ -1,5 +1,5 @@
 <!-- File: friend_suggestions.html
-Author: Justin Wang (justin1@bu.edu), 3/20/2025
+Author: Justin Wang (justin1@bu.edu), 3/20/2025 modified 3/27/2025
 Description: Friend suggestions template -->
 
 {% extends 'mini_fb/base.html' %}
@@ -23,7 +23,7 @@ Description: Friend suggestions template -->
                     <h3>{{ suggestion.first_name }} {{ suggestion.last_name }}</h3>
                 </div>
             </a>
-            <a href="{% url 'add_friend' profile.pk suggestion.pk %}" class="profile-button">Add Friend</a>
+            <a href="{% url 'add_friend' suggestion.pk %}" class="profile-button">Add Friend</a>
         </div>
         {% empty %}
         <p>No friend suggestions</p>

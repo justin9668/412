@@ -1,5 +1,5 @@
 <!-- File: base.html
-Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 2/27/2025
+Author: Justin Wang (justin1@bu.edu), 2/23/2025 modified 3/26/2025
 Description: Base template -->
 
 {% load static %}
@@ -15,9 +15,30 @@ Description: Base template -->
             <ul>
                 <li><a href="{% url 'show_all_profile' %}">People</a></li>
             </ul>
+            {% if not user.is_authenticated %}
             <ul>
-                <li><a href="{% url 'create_profile' %}">Create Profile</a></li>
+                <li><a href="{% url 'create_profile' %}">Sign up</a></li>
             </ul>
+            <ul>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+            {% else %}
+            <ul>
+                {% with user_profile=user.profile_set.first %}
+                    {% if user_profile %}
+                        <li><a href="{% url 'show_profile' user_profile.pk %}">Profile</a></li>
+                    {% endif %}
+                {% endwith %}
+            </ul>
+            <ul>
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            </ul>
+            {% endif %}
         </nav>
     </header>
     <main>
