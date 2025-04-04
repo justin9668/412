@@ -81,7 +81,10 @@ class VoterDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         voter = self.get_object()
-        address = f"{voter.residential_street_number}+{voter.residential_street_name},+{voter.residential_zip_code}"
+        address = f"{voter.residential_street_number}+{voter.residential_street_name}"
+        if voter.residential_apartment_number:
+            address += f"+Apartment+{voter.residential_apartment_number}"
+        address += f",+{voter.residential_zip_code}"
         context['google_maps_url'] = f"https://www.google.com/maps/search/?api=1&query={address}"
         return context
 
