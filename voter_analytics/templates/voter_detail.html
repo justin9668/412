@@ -1,0 +1,30 @@
+<!-- File: voter_detail.html
+Author: Justin Wang (justin1@bu.edu), 4/3/2025
+Description: Voter detail template -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <h1>Voter Detail</h1>
+    
+    <div class="voter-detail-container">
+        <h2>Personal Information</h2>
+        <p>Name: {{ voter.first_name|title }} {{ voter.last_name|title }}</p>
+        <p>Date of Birth: {{ voter.date_of_birth }}</p>
+        <p>Registration Date: {{ voter.date_of_registration }}</p>
+        <p>Party Affiliation: {{ voter.party_affiliation }}</p>
+        <p>Voter Score: {{ voter.voter_score }}</p>
+        <p>Precinct Number: {{ voter.precinct_number }}</p>
+
+        <h2>Address</h2>
+        <p>
+            {{ voter.residential_street_number }} {{ voter.residential_street_name|title }},
+            {% if voter.residential_apartment_number %} Apartment {{ voter.residential_apartment_number }},{% endif %}
+            {{ voter.residential_zip_code }}
+        </p>
+        <p><a href="{{ google_maps_url }}" target="_blank">View on Google Maps</a></p>
+    </div>
+</main>
+
+{% endblock content %} 

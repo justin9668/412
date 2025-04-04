@@ -1,0 +1,22 @@
+<!-- File: base.html
+Author: Justin Wang (justin1@bu.edu), 4/3/2025
+Description: Base template -->
+
+{% load static %}
+
+<html>
+    <head>
+        <title>Voter Analytics</title>
+        <link rel="stylesheet" href="{% static 'voter_analytics/styles.css' %}">
+    </head>
+    <header>
+        <nav>
+            <ul><a href="{% url 'voters' %}">Voter List</a></ul>
+            <ul><a href="{% url 'graphs' %}">Graphs</a></ul>
+        </nav>
+    </header>
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!-- File: graphs.html
+Author: Justin Wang (justin1@bu.edu), 4/3/2025
+Description: Graphs template -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    <h1>Voter Analytics Graphs</h1>
+
+    {% include 'filter.html' %}
+
+    <div class="graphs-container">
+        <div class="graph-box">
+            {{ graph_div_birth_years|safe }}
+        </div>
+
+        <div class="graph-box">
+            {{ graph_div_party|safe }}
+        </div>
+
+        <div class="graph-box">
+            {{ graph_div_elections|safe }}
+        </div>
+    </div>
+</main>
+
+{% endblock content %} 

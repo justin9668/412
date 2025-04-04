@@ -1,0 +1,58 @@
+<!-- File: voters.html
+Author: Justin Wang (justin1@bu.edu), 4/3/2025
+Description: Voters template -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    <h1>Voter List</h1>
+
+    {% include 'filter.html' %}
+
+    <div class="pagination-container">
+        {% if is_paginated %}
+        <ul>
+            {% if page_obj.has_previous %}
+                <li>
+                    <span><a href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Previous</a></span>
+                
+                </li>
+            {% endif %}
+                <li>
+                    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </li>
+            {% if page_obj.has_next %}
+                <li>
+                    <span><a href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Next</a></span>
+                </li>
+            {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+    
+    <div class="voters-table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Date of Birth</th>
+                <th>Party</th>
+                <th>Voter Score</th>
+            </tr>
+            {% for v in voters %}
+            <tr class="clickable-row">
+                <td><a href="{% url 'voter' v.pk %}" class="row-link">{{v.first_name|title}} {{v.last_name|title}}</a></td>
+                <td><a href="{% url 'voter' v.pk %}" class="row-link">{{v.residential_street_number}} {{v.residential_street_name|title}}, {% if v.residential_apartment_number %}Apartment {{v.residential_apartment_number}}, {% endif %} {{v.residential_zip_code}}</a></td>
+                <td><a href="{% url 'voter' v.pk %}" class="row-link">{{v.date_of_birth}}</a></td>
+                <td><a href="{% url 'voter' v.pk %}" class="row-link">{{v.party_affiliation}}</a></td>
+                <td><a href="{% url 'voter' v.pk %}" class="row-link">{{v.voter_score}}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</main>
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+<!-- File: filter.html
+Author: Justin Wang (justin1@bu.edu), 4/3/2025
+Description: Filter template -->
+
+
+<div class="filter-container">
+    <form action="{{ request.path }}" method="get">
+        <select name="party_affiliation">
+            <option value="" disabled selected hidden>Select Party</option>
+        {% for party in party_choices %}
+            <option value="{{ party }}" {% if request.GET.party_affiliation == party %}selected{% endif %}>
+                {{ party }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="min_birth_year">
+        <option value="" disabled selected hidden>Min Birth Year</option>
+        {% for year in birth_years %}
+            <option value="{{ year }}" {% if request.GET.min_birth_year|stringformat:"s" == year|stringformat:"s" %}selected{% endif %}>
+                {{ year }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="max_birth_year">
+        <option value="" disabled selected hidden>Max Birth Year</option>
+        {% for year in birth_years %}
+            <option value="{{ year }}" {% if request.GET.max_birth_year|stringformat:"s" == year|stringformat:"s" %}selected{% endif %}>
+                {{ year }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <select name="voter_score">
+        <option value="" disabled selected hidden>Select Voter Score</option>
+        {% for score in voter_score %}
+            <option value="{{ score }}" {% if request.GET.voter_score|stringformat:"s" == score|stringformat:"s" %}selected{% endif %}>
+                {{ score }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <div class="checkbox-row">
+        <input type="checkbox" name="v20state" value="TRUE" {% if request.GET.v20state %}checked{% endif %}>
+        <label>2020 State Election</label>
+
+        <input type="checkbox" name="v21town" value="TRUE" {% if request.GET.v21town %}checked{% endif %}>
+        <label>2021 Town Election</label>
+
+        <input type="checkbox" name="v21primary" value="TRUE" {% if request.GET.v21primary %}checked{% endif %}>
+        <label>2021 Primary</label>
+
+        <input type="checkbox" name="v22general" value="TRUE" {% if request.GET.v22general %}checked{% endif %}>
+        <label>2022 General</label>
+
+        <input type="checkbox" name="v23town" value="TRUE" {% if request.GET.v23town %}checked{% endif %}>
+        <label>2023 Town Election</label>
+    </div>
+
+    <div class="button-row">
+        <button type="submit">Filter</button>
+        <a href="{{ request.path }}" class="button">Clear</a>
+    </div>
+    </form>
+</div>
